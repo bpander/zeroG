@@ -1,0 +1,14 @@
+{
+  "name": "zeroG",
+  "description": "",
+  "author": "Brad Anderson",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bpander/zeroG"
+  },
+  "version": "0.0.1",
+  "dependencies": {
+    "requirejs": "~2.1.9",
+    "express": "~3.4.4"
+  }
+}
