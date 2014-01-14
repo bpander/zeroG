@@ -1,11 +1,11 @@
 define([
     'socket.io',
     'game/Game',
-    'game/environments/TestWorld'
+    'game/environments/EnvironmentWorld'
 ], function (
     socketIO,
     Game,
-    TestWorld
+    EnvironmentWorld
 ) {
     'use strict';
 
@@ -16,11 +16,11 @@ define([
         this.onConnection = this.onConnection.bind(this);
 
         var game = new Game();
-        var testWorld = new TestWorld();
 
-        // game.loadEnvironment(testWorld).then(game.animate);
+        game.loadEnvironment(new EnvironmentWorld()).then(game.animate);
 
     }
+
 
     GameServer.prototype.start = function (server) {
         this.io = socketIO.listen(server);
@@ -29,8 +29,15 @@ define([
         this.io.sockets.on('connection', this.onConnection);
     };
 
+
     GameServer.prototype.onConnection = function (socket) {
-        // socket.on('keydown', this.onKeyDown);
+        console.log('on connection');
+        socket.on('keydown', this.onKeyDown);
+    };
+
+
+    GameServer.prototype.onKeyDown = function () {
+        console.log('keydown');
     };
 
     return GameServer;

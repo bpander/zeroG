@@ -1,23 +1,14 @@
 requirejs([
-    'game/Game',
-    'game/environments/EnvironmentWorld'
+    'game/Player'
 ], function (
-    Game,
-    EnvironmentWorld
+    Player
 ) {
     "use strict";
 
     var onDomReady = function () {
-        window.game = new Game();
-        document.body.appendChild(window.game.renderer.domElement);
-        window.game.loadEnvironment(new EnvironmentWorld());
-        window.game.start();
+        window.player = new Player().start();
     };
 
-    if (document.readyState === 'complete') {
-        onDomReady();
-    } else {
-        document.addEventListener('DOMContentLoaded', onDomReady);
-    }
+    document.readyState === 'complete' ? onDomReady() : document.addEventListener('DOMContentLoaded', onDomReady);
 
 });

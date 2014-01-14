@@ -2,12 +2,14 @@ requirejs([
     'express',
     'http',
     'path',
-    'fs'
+    'fs',
+    'game/GameServer'
 ], function (
     express,
     http,
     path,
-    fs
+    fs,
+    GameServer
 ) {
 
     /**
@@ -38,6 +40,7 @@ requirejs([
      */
     server.listen(app.get('port'), function () {
         console.log('Express server listening on port ' + app.get('port'));
+        new GameServer().start(server);
     });
 
 });
